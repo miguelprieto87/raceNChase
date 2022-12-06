@@ -21,6 +21,8 @@ public class HealthManager : MonoBehaviourPun
     private GameObject deathUIPanel;
     private Text respawnTimerUIText;
 
+    public ParticleSystem deathVFX;
+
     private void Start()
     {
         currentHealth = startHealth;
@@ -52,6 +54,8 @@ public class HealthManager : MonoBehaviourPun
 
     private void Die()
     {
+        deathVFX.Play();
+
         Rigidbody rb = GetComponent<Rigidbody>();
 
         rb.velocity = Vector3.zero;
