@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using Photon.Pun;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody))]
 public class HealthManager : MonoBehaviourPun
@@ -18,15 +19,22 @@ public class HealthManager : MonoBehaviourPun
     public int respawnTimeInSeconds = 9;
 
     private float currentHealth;
-    private GameObject deathUIPanel;
-    private Text respawnTimerUIText;
+    [SerializeField]private GameObject deathUIPanel;
+    [SerializeField]private Text respawnTimerUIText;
 
+    [Header("Particles")]
     public ParticleSystem deathVFX;
+    public List<ParticleSystem> mufflerVFX;
 
     private void Start()
     {
         currentHealth = startHealth;
         healthBar.fillAmount = 1f;
+
+        if (!deathVFX.gameObject.activeInHierarchy)
+            deathVFX.gameObject.SetActive(true);
+        deathVFX.Stop();
+        toggleMufflers(true);
 
         if (photonView.IsMine)
         {
@@ -37,6 +45,16 @@ public class HealthManager : MonoBehaviourPun
         }
     }
 
+    void toggleMufflers(bool playFX)
+    {
+        foreach (ParticleSystem par in mufflerVFX)
+        {
+            if (playFX)
+                par.Play();
+            else
+                par.Stop();
+        }
+    }
     [PunRPC]
     public void ApplyDamage(float damage)
     {
@@ -74,6 +92,7 @@ public class HealthManager : MonoBehaviourPun
     {
         weaponObject.SetActive(alive);
         playerUIObject.SetActive(alive);
+        toggleMufflers(alive);
 
         if (photonView.IsMine)
         {
@@ -96,9 +115,10 @@ public class HealthManager : MonoBehaviourPun
 
         GetComponent<CarController>().enabled = true;
         GetComponent<Weapon>().enabled = true;
+        deathVFX.Stop();
 
         float randomPos = Random.Range(-35, 36);
-        transform.position = new Vector3(randomPos, 0, randomPos);
+        transform.position = new Vector3(randomPos, transform.position.y, randomPos);
 
         photonView.RPC("RestoreVehicle", RpcTarget.AllBuffered);
     }

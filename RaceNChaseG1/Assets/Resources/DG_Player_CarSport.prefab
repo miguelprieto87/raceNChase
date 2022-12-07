@@ -303,8 +303,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.4, z: 3.5}
-  m_Center: {x: 0, y: 0.43, z: -0.2}
+  m_Size: {x: 2, y: 2.0544927, z: 3.8579237}
+  m_Center: {x: 0, y: 0.7572465, z: -0.021038175}
 --- !u!114 &5945438357724921948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,8 +356,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3455aa09619dbc34798c3caa48bb113b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseSpeed: 1
   accelForce: 30
   rotationTorque: 30
+  resistance: 1
 --- !u!114 &-5581729248148395344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,8 +405,13 @@ MonoBehaviour:
   healthBar: {fileID: 4743990239124289505}
   weaponObject: {fileID: 1452987648173347161}
   playerUIObject: {fileID: 7731054696926973544}
-  respawnTimeInSeconds: 9
-  deathVFX: {fileID: 0}
+  respawnTimeInSeconds: 5
+  deathUIPanel: {fileID: 0}
+  respawnTimerUIText: {fileID: 0}
+  deathVFX: {fileID: 9051778442165985159}
+  mufflerVFX:
+  - {fileID: 1288981538936070439}
+  - {fileID: 4628814551737304366}
 --- !u!1 &3537330560672789734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,7 +1379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8764043878647920493, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
       propertyPath: m_Name
-      value: CFXR Fire Breath (1)
+      value: MufflerVFX
       objectReference: {fileID: 0}
     - target: {fileID: 8767152486562788127, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
       propertyPath: m_RootOrder
@@ -1432,6 +1439,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
+--- !u!198 &4628814551737304366 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8891297334280618237, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
+  m_PrefabInstance: {fileID: 4276415915670275539}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4824427372257965772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8767152486562788127, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
@@ -1446,11 +1458,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1741693452841693106, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
       propertyPath: m_Intensity
-      value: 3.0975685
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8764043878647920493, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
       propertyPath: m_Name
-      value: CFXR Fire Breath
+      value: MufflerVFX
       objectReference: {fileID: 0}
     - target: {fileID: 8767152486562788127, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
       propertyPath: m_RootOrder
@@ -1510,6 +1522,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
+--- !u!198 &1288981538936070439 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8891297334280618237, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
+  m_PrefabInstance: {fileID: 7676203252559290842}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1381607332105900741 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8767152486562788127, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
@@ -1524,7 +1541,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
       propertyPath: m_Name
-      value: CFX2_EnemyDeathSkull
+      value: DeathVFX
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
       propertyPath: m_IsActive
@@ -1604,6 +1621,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+--- !u!198 &9051778442165985159 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+  m_PrefabInstance: {fileID: 9051778442184982595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9051778442185382599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}

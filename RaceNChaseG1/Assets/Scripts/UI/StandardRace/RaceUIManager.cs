@@ -4,7 +4,7 @@ using UnityEngine;
 public class RaceUIManager : MonoBehaviour
 {
     public TMP_Text countdownUIText;
-
+    public GameObject orderPanel;
     public GameObject[] finishOrderUIObjects;
 
     public static RaceUIManager Instance { get; private set; }
@@ -31,6 +31,7 @@ public class RaceUIManager : MonoBehaviour
 
     public GameObject GetFinishOrderUIObject(int which)
     {
+        orderPanel.SetActive(true);
         return finishOrderUIObjects[which];
     }
 

@@ -25,18 +25,17 @@ public class LobbyEvents : MonoBehaviour
     {
         string playerName = playerNameInput.text;
 
-        if (!string.IsNullOrEmpty(playerName))
-        {
-            PhotonNetwork.LocalPlayer.NickName = playerName;
-            PhotonNetwork.ConnectUsingSettings();
+        if (string.IsNullOrEmpty(playerName))
+            playerName = "Player" + Random.Range(1000, 9999).ToString();
 
-            string connectingInfoName = uiManagerRef.connectingInfoPanel.name;
-            uiManagerRef.ActivatePanel(connectingInfoName);
-        }
-        else
-        {
-            Debug.LogError("<color=red>Empty player name.</color>");
-        }
+        if (playerName.Length > 28)
+            playerName = playerName.Substring(0, 28);
+
+        PhotonNetwork.LocalPlayer.NickName = playerName;
+        PhotonNetwork.ConnectUsingSettings();
+
+        string connectingInfoName = uiManagerRef.connectingInfoPanel.name;
+        uiManagerRef.ActivatePanel(connectingInfoName);
     }
 
     public void OnCreateGameClicked()

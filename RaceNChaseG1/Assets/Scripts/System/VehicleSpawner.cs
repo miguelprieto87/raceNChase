@@ -21,8 +21,8 @@ public class VehicleSpawner : MonoBehaviour
                 }
                 else if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsValue(GameMode.DeathRace.ToString()))
                 {
-                    int randomPosition = Random.Range(-35, 35);
-                    PhotonNetwork.Instantiate(vehiclePrefabs[(int)playerSelection].name, new Vector3(randomPosition, 0f, randomPosition), Quaternion.identity);
+                    int randomPosition = Random.Range(-50, 50);
+                    PhotonNetwork.Instantiate(vehiclePrefabs[(int)playerSelection].name, new Vector3(randomPosition, transform.position.y, randomPosition), Quaternion.identity);
                 }
             }
         }

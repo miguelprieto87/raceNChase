@@ -522,8 +522,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3455aa09619dbc34798c3caa48bb113b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelForce: 30
+  baseSpeed: 7
+  accelForce: 5
+  topSpeed: 40
   rotationTorque: 30
+  resistance: 3
 --- !u!114 &-74623267976320669
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -206,8 +206,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3455aa09619dbc34798c3caa48bb113b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelForce: 30
-  rotationTorque: 30
+  baseSpeed: 10
+  accelForce: 5
+  topSpeed: 50
+  rotationTorque: 10
+  resistance: 4
 --- !u!114 &4572414764315548221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +653,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 577278087779053400}
     m_Modifications:
     - target: {fileID: 3655713364690772666, guid: 4bd428c2ac09a6c4591748cb20f2badf, type: 3}
@@ -702,7 +704,6 @@ PrefabInstance:
       value: PlayerUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bd428c2ac09a6c4591748cb20f2badf, type: 3}
 --- !u!4 &1777920776030770052 stripped
 Transform:
