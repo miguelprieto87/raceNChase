@@ -103,4 +103,9 @@ public class LobbyEvents : MonoBehaviour
     {
         gameManagerRef.settings.gameMode = gameMode.mode;
     }
+
+    public void OnQuitGameClicked()
+    { 
+        Application.Quit(); 
+    }
 }
