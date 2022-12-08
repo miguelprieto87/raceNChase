@@ -6,9 +6,11 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class CarController : MonoBehaviourPun
 {
-    public float baseSpeed = 1f;
+    public float topSpeed = 30f;
     public float accelForce = 30f;
     public float rotationTorque = 30f;
+
+    float currentAccel = 0f;
 
     public float resistance = 1f;
 
@@ -30,26 +32,32 @@ public class CarController : MonoBehaviourPun
     void FixedUpdate()
     {
         speedometer.text = currentSpeed();
-
-        float speedReduction = Random.Range(0, resistance);
-        float carVelocity = ((baseSpeed * (accelForce - speedReduction)) + 1);
+        currentAccel = Mathf.Clamp(currentAccel, -topSpeed, topSpeed);
 
         if (Input.GetKey(KeyCode.W))
         {
-            body.AddRelativeForce(new(0f, 0f, carVelocity));
+            currentAccel += accelForce;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            body.AddRelativeForce(new(0f, 0f, -carVelocity / 2));
+            currentAccel -= accelForce;
         }
+        else
+        {
+            if (currentAccel > 0f)
+                currentAccel -= resistance;
+            else if (currentAccel < 0f)
+                currentAccel = 0f;
+        }
+        body.AddRelativeForce(new(0f, 0f, currentAccel));
 
         if (Input.GetKey(KeyCode.D))
         {
-            body.AddRelativeTorque(new(0f, rotationTorque, baseSpeed));
+            body.AddRelativeTorque(new(0f, rotationTorque, 0f));
         }
         if (Input.GetKey(KeyCode.A))
         {
-            body.AddRelativeTorque(new(0f, -rotationTorque, baseSpeed));
+            body.AddRelativeTorque(new(0f, -rotationTorque, 0f));
         }
     }
     string currentSpeed()

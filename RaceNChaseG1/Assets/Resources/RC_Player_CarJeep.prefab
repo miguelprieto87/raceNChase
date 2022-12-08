@@ -438,9 +438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3455aa09619dbc34798c3caa48bb113b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 20
-  accelForce: 2
-  topSpeed: 30
+  topSpeed: 40
+  accelForce: 3
   rotationTorque: 15
   resistance: 2
 --- !u!114 &-3299177327490218170
