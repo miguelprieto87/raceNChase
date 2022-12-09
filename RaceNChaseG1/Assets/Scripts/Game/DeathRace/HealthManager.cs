@@ -26,6 +26,11 @@ public class HealthManager : MonoBehaviourPun
     public ParticleSystem deathVFX;
     public List<ParticleSystem> mufflerVFX;
 
+    public AudioSource Source;
+    public AudioClip Ded;
+    public AudioClip Vroom;
+    public AudioClip Crash;
+
     private void Start()
     {
         currentHealth = startHealth;
@@ -51,6 +56,7 @@ public class HealthManager : MonoBehaviourPun
         {
             if (playFX)
                 par.Play();
+            
             else
                 par.Stop();
         }
@@ -59,6 +65,8 @@ public class HealthManager : MonoBehaviourPun
     public void ApplyDamage(float damage)
     {
         if (currentHealth <= 0f) return;
+
+        Source.PlayOneShot(Crash, 0.7F);
 
         currentHealth -= damage;
 
@@ -73,6 +81,9 @@ public class HealthManager : MonoBehaviourPun
     private void Die()
     {
         deathVFX.Play();
+
+        Source.PlayOneShot(Ded, 0.7F);
+        Source.Play();
 
         Rigidbody rb = GetComponent<Rigidbody>();
 

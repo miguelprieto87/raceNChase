@@ -16,6 +16,9 @@ public class Weapon : MonoBehaviourPun
 
     private LineRenderer lineRenderer;
 
+    public AudioSource Source;
+    public AudioClip Pewpew;
+
     private void Start()
     {
         isLaser = playerProperties.weaponName == "Laser Gun";
@@ -33,6 +36,8 @@ public class Weapon : MonoBehaviourPun
         if (Input.GetKey(KeyCode.Space))
         {
             photonView.RPC("NotifyFire", RpcTarget.AllBuffered);
+
+            Source.PlayOneShot(Pewpew, 0.7F);
         }
         else
         {

@@ -17,6 +17,9 @@ public class CarController : MonoBehaviourPun
     private Rigidbody body;
     private TMP_Text speedometer;
 
+    public AudioSource Source;
+    public AudioClip Vroom;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,7 @@ public class CarController : MonoBehaviourPun
         if (Input.GetKey(KeyCode.W))
         {
             currentAccel += accelForce;
+            Source.PlayOneShot(Vroom, 0.7F);
         }
         else if (Input.GetKey(KeyCode.S))
         {

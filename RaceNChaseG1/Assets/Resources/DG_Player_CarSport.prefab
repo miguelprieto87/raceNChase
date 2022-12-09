@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3455aa09619dbc34798c3caa48bb113b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 1
+  topSpeed: 30
   accelForce: 30
   rotationTorque: 30
   resistance: 1
@@ -389,6 +389,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   projectileSpawn: {fileID: 1640175523}
   playerProperties: {fileID: 11400000, guid: 2e20185bceb95ad4aad6113044dd9d98, type: 2}
+  Source: {fileID: 0}
+  Pewpew: {fileID: 8300000, guid: 7c95f1dcae12cf34f9e7342d29e6d953, type: 3}
 --- !u!114 &6992001681796514726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +414,8 @@ MonoBehaviour:
   mufflerVFX:
   - {fileID: 1288981538936070439}
   - {fileID: 4628814551737304366}
+  Source: {fileID: 0}
+  Ded: {fileID: 8300000, guid: 8a04dc599cf6d754b94beb144f5f682f, type: 3}
 --- !u!1 &3537330560672789734
 GameObject:
   m_ObjectHideFlags: 0
