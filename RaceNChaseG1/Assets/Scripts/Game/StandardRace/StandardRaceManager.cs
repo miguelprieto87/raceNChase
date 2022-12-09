@@ -5,6 +5,9 @@ using UnityEngine;
 public class StandardRaceManager : MonoBehaviour
 {
     public GameObject lapContainer;
+    public GameObject initialLine;
+    public GameObject finalLine;
+    public byte numberOfLaps;
     [HideInInspector]
     public List<Collider> lapTriggers;
 
@@ -25,5 +28,6 @@ public class StandardRaceManager : MonoBehaviour
     private void Start()
     {
         lapTriggers = lapContainer.GetComponentsInChildren<Collider>().ToList();
+        numberOfLaps = GameManager.Instance.settings.numberOfLaps;
     }
 }

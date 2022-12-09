@@ -7,10 +7,12 @@ using Photon.Realtime;
 
 using ExitGames.Client.Photon;
 
+
 public class LobbyEvents : MonoBehaviour
 {
     public TMP_InputField playerNameInput;
     public TMP_InputField roomNameInput;
+    public TMP_InputField numberOfLapsInput;
 
     private GameManager gameManagerRef;
     private UIPanelManager uiManagerRef;
@@ -47,7 +49,8 @@ public class LobbyEvents : MonoBehaviour
     public void OnCreateRoomClicked()
     {
         string roomName = roomNameInput.text;
-        
+
+        gameManagerRef.settings.numberOfLaps = byte.Parse(numberOfLapsInput.text); 
         if (string.IsNullOrEmpty(roomName))
         {
             roomName = "Room" + Random.Range(1, 10000);

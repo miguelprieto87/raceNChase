@@ -526,6 +526,8 @@ MonoBehaviour:
   accelForce: 1
   rotationTorque: 20
   resistance: 2
+  Source: {fileID: 0}
+  Vroom: {fileID: 0}
 --- !u!114 &-74623267976320669
 MonoBehaviour:
   m_ObjectHideFlags: 0

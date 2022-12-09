@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: -2155252738686735468}
   m_Layer: 0
   m_Name: RC_Player_CarJeep
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -442,6 +442,8 @@ MonoBehaviour:
   accelForce: 3
   rotationTorque: 15
   resistance: 2
+  Source: {fileID: 0}
+  Vroom: {fileID: 0}
 --- !u!114 &-3299177327490218170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,6 +482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72539ed141921004a88e38f491944176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lapCount: 0
+  numberOfLaps: 0
 --- !u!1 &8755522242653553365
 GameObject:
   m_ObjectHideFlags: 0

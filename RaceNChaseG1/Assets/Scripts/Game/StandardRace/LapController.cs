@@ -18,11 +18,14 @@ public class LapController : MonoBehaviourPun
     private List<Collider> lapTriggers = new List<Collider>();
 
     private byte finishOrder = 0;
+    public byte lapCount = 0;
+    public byte numberOfLaps = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         lapTriggers = StandardRaceManager.Instance.lapTriggers;
+        numberOfLaps = StandardRaceManager.Instance.numberOfLaps;
     }
 
     private void OnEnable()
@@ -65,12 +68,19 @@ public class LapController : MonoBehaviourPun
     {
         if (lapTriggers.Contains(other))
         {
-            int triggerIndex = lapTriggers.IndexOf(other);
-            lapTriggers[triggerIndex].gameObject.SetActive(false);
+            //int triggerIndex = lapTriggers.IndexOf(other);
+            //lapTriggers[triggerIndex].gameObject.SetActive(false);
+
+            StandardRaceManager.Instance.initialLine.SetActive(false);
+            StandardRaceManager.Instance.finalLine.SetActive(true);
 
             if (other.name == "FinishTrigger")
             {
-                GameFinished();
+                lapCount++;
+                if (lapCount == numberOfLaps) 
+                {
+                    GameFinished();
+                }
             }
         }
     }

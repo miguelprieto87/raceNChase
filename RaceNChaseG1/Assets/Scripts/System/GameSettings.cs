@@ -9,4 +9,5 @@ public struct GameSettings
 
     [Header("Standard Settings")]
     public byte timeToRaceStart;
+    public byte numberOfLaps;
 }

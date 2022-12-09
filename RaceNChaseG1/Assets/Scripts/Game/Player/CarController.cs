@@ -16,10 +16,11 @@ public class CarController : MonoBehaviourPun
 
     private Rigidbody body;
     private TMP_Text speedometer;
+    private TMP_Text lapsCounter;
 
     public AudioSource Source;
     public AudioClip Vroom;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class CarController : MonoBehaviourPun
         if (photonView.IsMine)
         {
             speedometer = GameObject.Find("TXT_Speed").GetComponent<TMP_Text>();
+            lapsCounter = GameObject.Find("TXT_Laps").GetComponent<TMP_Text>();            
         }
     }
 
@@ -35,6 +37,7 @@ public class CarController : MonoBehaviourPun
     void FixedUpdate()
     {
         speedometer.text = currentSpeed();
+        lapsCounter.text = currentLaps();
         currentAccel = Mathf.Clamp(currentAccel, -topSpeed, topSpeed);
 
         if (Input.GetKey(KeyCode.W))
@@ -77,5 +80,12 @@ public class CarController : MonoBehaviourPun
     public void DisableControls()
     {
         body.isKinematic = true;
+    }
+
+    string currentLaps() 
+    {
+        string currentLaps = "Laps " + "/" + GameManager.Instance.settings.numberOfLaps; 
+        return currentLaps;
+
     }
 }
