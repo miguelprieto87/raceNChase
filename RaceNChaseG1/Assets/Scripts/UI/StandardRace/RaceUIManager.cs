@@ -1,7 +1,9 @@
 using TMPro;
 using UnityEngine;
+using Photon.Pun;
+using UnityEngine.SceneManagement;
 
-public class RaceUIManager : MonoBehaviour
+public class RaceUIManager : MonoBehaviourPunCallbacks
 {
     public TMP_Text countdownUIText;
     public GameObject orderPanel;
@@ -38,5 +40,17 @@ public class RaceUIManager : MonoBehaviour
     public void SetCountdownUIText(string text)
     {
         countdownUIText.text = text;
+    }
+
+    public void OnQuitClicked()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+
+        SceneManager.LoadScene("LobbyScene");
     }
 }
